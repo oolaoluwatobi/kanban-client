@@ -52,74 +52,78 @@ const CreateTaskPage = () => {
 
   return (
     <div className=" bg-slate-50 rounded-md w-full h-full">
-      <div className="pt-2 mx-auto bg-red-30">
+      <div className="pt2 mx-auto bg-red-30">
         <Form
           method="post"
-          className="flex flex-col  p-4 lg:p-8 rounded placeholder:text-xs max-w-[567px] mx-auto bg-slate-200"
+          className="flex flex-col  p4 lg:p8 rounded-lg placeholder:text-xs max-w-sm mx-auto bg-slate-20"
           replace
         >
-          <h3 className=" lg:text-xl font-semibold">Create Task</h3>
-          <label className="lg:flex bg-purple-20 w-full">
-            <h3 className="  mr-[3.60rem] lg:-mr4 mt-7 text-sm font-medium   bg-red-20">Title</h3>
-            <div className="flex flexx-1 lg:flex-col ml-auto max-wsm w-full">
-              <div className="ml16  w-full  bg-green-20">
-                <input
-                  className="indent-2 border border-[#d1d5db] flex-grow w-full  bg-purple100  rounded-lg p-3 text-sm mt-4 placeholder:text-[#4d4d4d]"
-                  type="title"
-                  name="title"
+          <h3 className=" lg:text-xl bg-[#e4e4d0] text-[#94a684] mt-2 px-2 py-2 rounded-lg  font-bold">Create Task</h3>
+
+          <div className="bg-red-5 bg-[#e4e4d0] rounded-lg mt-4 p-2">
+              
+            <label className="   w-full">
+              <h3 className="  my-1  text-sm font-medium text-[#94a684]  bg-red-20">Task Title</h3>
+              <div className=" ml-auto max-wsm w-full">
+                <div className="ml16  w-full  bg-green-20">
+                  <input
+                    className="indent-2 border border-[#94a684]  w-full  bg-purple100  rounded-lg p-1 m1 text-sm mt4 placeholder:text-[#94a684   ring-[#94a684]  ring-offset2 ring-2 focus:ring"
+                    type="title"
+                    name="title"
+                    defaultValue=""
+                    placeholder="Task title"
+                  />
+                  {newTask &&
+                    (newTask?.title ? (
+                      <small>{newTask?.title}</small>
+                    ) : (
+                      <small className="text-red-500 text-xs mt-1">
+                        title is required
+                      </small>
+                    ))}
+                </div>
+              </div>
+            </label>
+
+            <label className="lg:flex bg-slate100  bg-[#e4e4d0]   w-full">
+              <div className="lg:fle lg:flex-co  w-full ml-auto ">
+              <h3 className="py-1 mt-2 text-[#94a684] text-sm font-medium">Task Description</h3>
+                <textarea
+                  className="indent-2 border  border-[#94a684] rounded-lg lg:h-20 text-sm text-start py-1 mt4 placeholder:text-[#94a684] focus: focus: ring-[#94a684]  ring-offset2 ring-2 focus:ring w-full"
+                  type="text-area"
+                  name="description"
                   defaultValue=""
-                  placeholder="title"
+                  placeholder="Task description"
                 />
                 {newTask &&
-                  (newTask?.title ? (
-                    <small>{newTask?.title}</small>
+                  (newTask?.description ? (
+                    <small>{newTask?.description}</small>
                   ) : (
                     <small className="text-red-500 text-xs mt-1">
-                      title is required
+                      description is required
                     </small>
                   ))}
               </div>
-            </div>
-          </label>
+            </label>
 
-          <label className="lg:flex bg-slate100  bg-purple-20 w-full">
-            <h3 className="mr4 mt-7 text-sm font-medium">Task Description</h3>
-            <div className="lg:fle lg:flex-co  w-full ml-auto ">
-              <textarea
-                className="indent-2 border  border-[#d1d5db] rounded-lg lg:h-40 text-sm text-start p-3 mt-4 placeholder:text-[#4d4d4d] w-full"
-                type="text-area"
-                name="description"
-                defaultValue=""
-                placeholder="Task description"
-              />
-              {newTask &&
-                (newTask?.description ? (
-                  <small>{newTask?.description}</small>
-                ) : (
-                  <small className="text-red-500 text-xs mt-1">
-                    description is required
-                  </small>
-                ))}
-            </div>
-          </label>
-
-          <div className="flex">
-            <div className=" bg-green-200"></div>
-            <div className="ml-auto mt-4 w96 w-full  bg-red-200">
-              <button
-                disabled={navigation.state === "submitting"}
-                className=" text-slate-200 bg-slate-500 text-sm font-semibold mt5 p-2 px-4 w-full rounded"
-              >
-                {navigation.state === "submitting" ? "Saving..." : "Save"}
-              </button>
-              {/* <button
-                // disabled={navigation.state === "submitting"}
-                className=" text-red-500 bg-indigo-100 text-sm font-semibold ml-5 p-2 px-4  rounded"
+            <div className="flex">
+              <div className=" bg-green-200"></div>
+              <div className="ml-aut mt-2 w96 w-full  bg-red-20">
+                <button
+                  disabled={navigation.state === "submitting"}
+                  className=" text-slate-20 bg-slate-5  bg-[#94a684]  text-[#e4e4d0] text-sm font-semibold mt5 p-2 px4 w-full rounded-lg"
                 >
-                {navigation.state === "submitting"
-                  ? "Saving..."
-                  : "Cancel"}
-              </button> */}
+                  {navigation.state === "submitting" ? "Saving..." : "Save"}
+                </button>
+                {/* <button
+                  // disabled={navigation.state === "submitting"}
+                  className=" text-red-500 bg-indigo-100 text-sm font-semibold ml-5 p-2 px-4  rounded"
+                  >
+                  {navigation.state === "submitting"
+                    ? "Saving..."
+                    : "Cancel"}
+                </button> */}
+              </div>
             </div>
           </div>
         </Form>

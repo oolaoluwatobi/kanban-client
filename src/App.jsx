@@ -14,14 +14,16 @@ import EditTaskPage, {action as editTaskPageAction, loader as editTaskPageLoader
 import Destroy, {action as destroyAction} from "./components/Destroy";
 import TaskDetailsPage from "./pages/TaskDetailsPage";
 import ErrorPage from "./pages/ErrorPage";
+import HomePageLogo from "./components/HomePageLogo";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} loader={layoutLoader} 
     errorElement={<ErrorPage />} >
       <Route path="/" element={<HomePage />} >
+        <Route index element={<HomePageLogo />} />
         <Route
-          index
+          path="add/task"
           element={<CreateTaskPage />}
           loader={createTaskPageLoader}
           action={createTaskPageAction}
