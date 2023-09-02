@@ -66,17 +66,17 @@ const EditTaskPage = () => {
 
   return (
     <div className=" bg-slate-50 rounded-md w-full h-full">
-      <div className="pt-2 mx-auto bg-red-30">
+      <div className="pt-2 mx-auto bg-red-300">
         <Form
           method="post"
-          className="flex flex-col p-8 rounded placeholder:text-xs w-[567px] mx-auto bg-slate-200"
+          className="flex flex-col  p-4 lg:p-8 rounded placeholder:text-xs max-w-[567px] mx-auto bg-slate-200"
           replace
         >
-        <h3 className="text-xl font-semibold">Edit Task Section</h3>
-          <label className="flex bg-slate100 w-full">
-            <h3 className="-mr-4 mt-7 text-sm font-medium">Title</h3>
-            <div className="flex flex-col ml-auto w-96">
-              <div className="ml16">
+        <h3 className=" lg:text-xl font-semibold">Edit Task Section</h3>
+          <label className="lg:flex bg-slate100 w-full bg-red-100">
+            <h3 className=" md:-mr4 mt-7 text-sm font-medium bg-red-200 mr-[3.60rem]">Title</h3>
+            <div className="lg:flex lg:flex-col ml-auto max-wsm w-full bg-red-200">
+              <div className="ml16  bg-red-300">
                 <input
                   className="indent-2 border border-[#d1d5db] flex-grow w-full  bg-purple100  rounded-lg p-3 text-sm mt-4 placeholder:text-[#4d4d4d]"
                   type="title"
@@ -96,11 +96,11 @@ const EditTaskPage = () => {
             </div>
           </label>
 
-          <label className="flex bg-slate100">
-            <h3 className="mr4 mt-7 text-sm font-medium">Task Description</h3>
-            <div className="flex flex-col  w-96 ml-auto">
+          <label className="lg:flex bg-slate100  w-full bg-red-100">
+            <h3 className="mr4 mt-7 text-sm font-medium  bg-red-200">Task Description</h3>
+            <div className="lg:flex lg:flex-col  max-wsm w-full ml-auto  bg-red-200">
               <textarea
-                className="indent-2 border  border-[#d1d5db] rounded-lg h-40 text-sm text-start p-3 mt-4 placeholder:text-[#4d4d4d] "
+                className="indent-2 border  border-[#d1d5db] rounded-lg h-40 text-sm text-start p-3 mt-4 w-full placeholder:text-[#4d4d4d] "
                 type="text-area"
                 name="description"
                 defaultValue={loaderData?.description}
@@ -119,10 +119,10 @@ const EditTaskPage = () => {
 
           <div className="flex">
             <div className=" bg-green-200"></div>
-            <div className="ml-auto mt-4 w-96">
+            <div className="ml-auto mt-4 w96 w-full">
               <button
                 disabled={navigation.state === "submitting"}
-                className=" text-slate-200 bg-slate-500 text-sm font-semibold mt5 p-2 px-4  rounded"
+                className=" text-slate-200 bg-slate-500 text-sm font-semibold mt5 p-2 px-4 w-full sm:w-auto rounded"
               >
                 {navigation.state === "submitting" ? "Saving..." : "Save"}
               </button>

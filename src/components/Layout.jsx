@@ -17,16 +17,14 @@ const Layout = () => {
   // console.log(resData)
 
   return (
-    <div className="bg-red-10 min-h-screen w-full ">
-      <div>
-        <Header />
-        <main className="">
-          <Outlet context={{resData}} />
-        </main>
-        {/* <div className="mbauto mxauto">
-          <Footer />
-        </div> */}
-      </div>
+    <div className="bg-red-10 w-full ">
+      <Header />
+      <main className="w-full">
+        <Outlet context={{resData}} />
+      </main>
+      {/* <div className="mbauto mxauto">
+        <Footer />
+      </div> */}
     </div>
   );
 };
