@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Link, useActionData, useLoaderData } from 'react-router-dom';
+import { Form, Link, useActionData, useLoaderData, useNavigation } from 'react-router-dom';
 import api  from '../api/server'
 import { AiFillEdit, AiOutlineEdit } from 'react-icons/ai';
 import { MdDeleteForever } from 'react-icons/md';
@@ -41,18 +41,10 @@ export async function action({ request, params }) {
 }
 const TaskDetailsPage = () => {
   const loaderData = useLoaderData();
-  const actionData = useActionData();
+  const navigation = useNavigation();
 
   console.log(loaderData)
   const { _id, title, description, status  } = loaderData
-  
-    const renderStatus = (status) => {
-      return (
-        <h3 className='capitalize text-center'>{status}</h3>
-      )
-    }
- 
-
 
   return (
     <section className=''>
