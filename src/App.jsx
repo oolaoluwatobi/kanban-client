@@ -31,6 +31,7 @@ const router = createBrowserRouter(
         />
         <Route
           path="tasks/:id/edit"
+          // key={loaderData.status}
           element={<EditTaskPage />}
           loader={editTaskPageLoader}
           action={editTaskPageAction}
