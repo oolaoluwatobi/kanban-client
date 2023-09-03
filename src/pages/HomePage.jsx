@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, Link, redirect, useOutletContext, Outlet } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md"
-import { AiOutlineEdit, AiOutlineEye } from "react-icons/ai"
+import { AiFillEdit, AiOutlineEdit, AiOutlineEye } from "react-icons/ai"
 import api from '../api/server'
 
 const HomePage = () => {
@@ -135,13 +135,13 @@ const HomePage = () => {
         </div>
         <div className="m2 mt-2 px-2 py-1   flex justify-betwee w-full  col-span-3   bg-[#94a684]  text-[#e4e4d0] rounded-lg  bg-red-20"> 
           <div className="p1 rounded-full  bg-whit ">
-            <Link to={`/tasks/${task._id}/edit`}>
+            <Link to={`/tasks/${task._id}`}>
                 <p className="text-[0.675rem] hover:underline">View task</p>
             </Link>
           </div>
           <div className="p-1 cursor-pointer rounded-full bg-[#aec3ae ml-auto">
             <Link to={`/tasks/${task._id}/edit`}>
-                <AiOutlineEdit className="w-2.5 h-2.5 aspect-square" /> 
+                <AiFillEdit className="w-2.5 h-2.5 aspect-square" /> 
             </Link>
           </div>
 
@@ -184,7 +184,7 @@ const HomePage = () => {
         </div>
         <div className="m2 mt-2 px-2 py-1   flex lg:bloc justify-betwee w-full  col-span-3 lg:col-span2  bg-[#ba90c6]  text-[#f9f5f6] rounded-lg  bg-red-20"> 
           <div className="p1 rounded-full  bg-whit ">
-            <Link to={`/tasks/${task._id}/edit`}>
+            <Link to={`tasks/${task._id}`}>
               <p className="text-[0.675rem] hover:underline lg:hidde">View task</p>
             </Link>
           </div>
@@ -233,7 +233,7 @@ const HomePage = () => {
         </div>
         <div className="m2 mt-2 px-2 py-1 h-auto lg:mt0 flex  justify-betwee w-full lg: col-span-3  bg-[#96b6c5]  text-[#ffeadd] rounded-lg  bg-red-20"> 
           <div className="p1 rounded-full  bg-whit ">
-            <Link to={`/tasks/${task._id}/edit`}>
+            <Link to={`/tasks/${task._id}`}>
                 <p className="text-[0.675rem] hover:underline">View task</p>
             </Link>
           </div>

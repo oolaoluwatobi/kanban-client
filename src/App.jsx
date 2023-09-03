@@ -12,7 +12,7 @@ import CreateTaskPage, {
 } from "./pages/CreateTaskPage";
 import EditTaskPage, {action as editTaskPageAction, loader as editTaskPageLoader } from "./pages/EditTaskPage";
 import Destroy, {action as destroyAction} from "./components/Destroy";
-import TaskDetailsPage from "./pages/TaskDetailsPage";
+import TaskDetailsPage, { action as taskDetailsPageAction, loader as taskDetailsPageLoader} from "./pages/TaskDetailsPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePageLogo from "./components/HomePageLogo";
 
@@ -40,8 +40,8 @@ const router = createBrowserRouter(
         <Route
           path="tasks/:id"
           element={<TaskDetailsPage />}
-          // loader={taskDetailsPageLoader}
-          // action={taskDetailsPageAction}
+          loader={taskDetailsPageLoader}
+          action={taskDetailsPageAction}
           errorElement={<ErrorPage />}
         />
         <Route

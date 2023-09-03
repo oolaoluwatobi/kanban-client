@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import {
   Form,
+  Link,
   redirect,
   useActionData,
   useLoaderData,
   useNavigation,
 } from "react-router-dom";
 import api from "../api/server";
+import { AiFillHome } from "react-icons/ai";
 
 export async function loader({ request, params }) {
   try {
@@ -66,7 +68,7 @@ const EditTaskPage = () => {
   }, [loaderData]);
 
   return (
-    <div className=" bg-slate-50 rounded-md w-full h-full">
+    <div className=" bg-slate-50 rounded-md w-full h-full" key={loaderData.status}>
       <div className="pt-2 mx-auto bg-red-30">
         <Form
           method="post"
@@ -74,7 +76,7 @@ const EditTaskPage = () => {
           replace
         >
           <h3
-            className={`text-base   px-2 py-2 rounded-lg lg:text-xl font-semibold ${
+            className={`text-base   px-4 py-2 rounded-lg lg:text-xl font-semibold ${
               loaderData.status === "todo"
                 ? "bg-[#e4e4d0] text-[#94a684]"
                 : loaderData.status === "doing"
@@ -88,7 +90,7 @@ const EditTaskPage = () => {
           </h3>
 
           <div
-            className={`  rounded-lg mt-4 p-2  ${
+            className={`  rounded-lg mt-4 p-4  ${
               loaderData.status === "todo"
                 ? "bg-[#e4e4d0]  text-[#94a684]"
                 : loaderData.status === "doing"
@@ -167,28 +169,48 @@ const EditTaskPage = () => {
             </label>
 
             <div className="flex">
-              <div className=" bg-green-20"></div>
-              <div className="ml-auto mt4 w96 w-full">
-                <button
-                  disabled={navigation.state === "submitting"}
-                  className={` mt-2 text-sm font-semibold mt5 p-2 px4 w-full sm:w-auto rounded    ${
+              <div className=" bg-green-200 h-2"></div>
+              <div 
+                  className={`flex items-baseline mt-2 text-sm font-semibold mt5 p-2 px4 w-full sm:w-auto rounded-lg  bg-red-200   ${
                     loaderData.status === "todo"
                       ? "text-[#e4e4d0] bg-[#94a684]"
                       : loaderData.status === "doing"
                       ? "text-[#f8e8ee] font-bold bg-[#ba90c6]"
                       : "text-[#eee0c9] bg-[#96b6c5] font-bold "
-                  }`}
+                  }`}>
+                <button
+                  disabled={navigation.state === "submitting"}
                 >
                   {navigation.state === "submitting" ? "Saving..." : "Save"}
                 </button>
-                {/* <button
-                // disabled={navigation.state === "submitting"}
-                className=" text-red-500 bg-indigo-100 text-sm font-semibold ml-5 p-2 px-4  rounded"
+ 
+                <Form
+                  className='my-auto ml-auto bg-red-30'
+                  method="post"
+                  action={`/tasks/${loaderData._id}/destroy`}
+                  onSubmit={(event) => {
+                    if (
+                      !confirm(
+                        "Please confirm you want to delete this record."
+                      )
+                    ) {
+                      event.preventDefault();
+                    }
+                  }}
                 >
-                {navigation.state === "submitting"
-                  ? "Saving..."
-                  : "Cancel"}
-              </button> */}
+                  <div className="">
+                    <button className=' items-baseline text-[] bg-red-20 h-full ' type="submit">Delete
+                    </button>
+                  </div>
+                </Form>
+
+                
+                <p className="ml-auto  bg-red-20 my-auto">
+                  <Link to={'/'}>
+                    <AiFillHome size={15} />
+                  </Link>
+                </p>
+                
               </div>
             </div>
           </div>
