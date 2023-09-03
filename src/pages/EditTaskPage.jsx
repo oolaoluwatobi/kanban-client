@@ -171,7 +171,7 @@ const EditTaskPage = () => {
             <div className="flex">
               <div className=" bg-green-200 h-2"></div>
               <div 
-                  className={`flex items-baseline mt-2 text-sm font-semibold mt5 p-2 px4 w-full sm:w-auto rounded-lg  bg-red-200   ${
+                  className={`flex items-baseline mt-2 text-sm font-semibold mt5 p-2 px4 w-full sm:wauto rounded-lg  bg-red-200   ${
                     loaderData.status === "todo"
                       ? "text-[#e4e4d0] bg-[#94a684]"
                       : loaderData.status === "doing"
