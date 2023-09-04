@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Form, Link, redirect, useOutletContext, Outlet } from "react-router-dom";
+import { Form, Link, redirect, useOutletContext, Outlet, useParams } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md"
 import { AiFillEdit, AiOutlineEdit, AiOutlineEye } from "react-icons/ai"
 import api from '../api/server'
 
 const HomePage = () => {
   const {resData} = useOutletContext()
+  const { id } = useParams()
 
   const [todo, setTodo] = useState([])
   const [doing, setDoing] = useState([])
   const [done, setDone] = useState([])
-  const [dropDown, seDropDone] = useState(false)
+  const [task, setTask] = useState('')
+  const [droppedTask, setDroppedTask] = useState('')
+  const [clickedTaskId, setClickedTaskId] = useState('')
   // console.log(resData)
 
   function handleOnDrag(e, id) {
@@ -23,26 +26,32 @@ const HomePage = () => {
     const widgetId = e.dataTransfer.getData("widgetId")
     const pickedTask = resData.find(task => task._id === widgetId)
     console.log("widgetId", widgetId, category, pickedTask)
+    console.log(id, category, widgetId)
+    if (id === widgetId) {
+      setTask(category)
+      // var currentTask = category
+    }
     if (widgetId && pickedTask) {
      async function editTaskStatus(currentId, task) {
        const item = { id: currentId, status: task  }
+       console.log('paramsID:', id, "droppedID:", widgetId);
        console.log(currentId, item)
        try {
          // const res = await api.delete(`/tasks`, {
          //   id: `${params.id}`
          // });
          const res = await api.put(`/tasks`, item);
-     
-     
-         console.log(res, res?.data, "92: Subs...");
-         return redirect("/");
+         
+          setDroppedTask(res?.data?.status)
+         console.log(res, res?.data?.status, "task:", category, task, "92: Subs...");
+         return redirect(res?.data?.status);
        } catch (error) {
          console.log(error.message);
          return error, redirect("/");
        }
  
      } 
-     editTaskStatus(widgetId, category)
+     const updatedStatus = editTaskStatus(widgetId, category)
     }
     
 
@@ -88,6 +97,14 @@ const HomePage = () => {
     console.log("dragover")
   }
 
+  function handleClick(e, clickedItemId, clickedItemStatus, paramsId) {
+    
+    if (clickedItemId !== paramsId) {
+      setTask(clickedItemStatus)
+      // var currentTask = category
+    }
+  }
+
   // console.log(todo)
   // console.log(doing)
   // console.log(done)
@@ -97,6 +114,11 @@ const HomePage = () => {
     setDoing(resData.filter(task => task.status === 'doing'))
     setDone(resData.filter(task => task.status === 'done'))
   }, [resData])
+
+  useEffect(() => {
+    console.log(task)
+    console.log(droppedTask)
+  }, [task, droppedTask])
 
   // useEffect(() => {
   //  if (currentWidgetId && currentTask) {
@@ -135,12 +157,12 @@ const HomePage = () => {
         </div>
         <div className="m2 mt-2 px-2 py-1   flex justify-betwee w-full  col-span-3   bg-[#94a684]  text-[#e4e4d0] rounded-lg  bg-red-20"> 
           <div className="p1 rounded-full  bg-whit ">
-            <Link to={`/tasks/${task._id}`}>
+            <Link to={`/tasks/${task._id}`} onClick={(e) => handleClick(e, task._id, task.status, id)} >
                 <p className="text-[0.675rem] hover:underline">View task</p>
             </Link>
           </div>
           <div className="p-1 cursor-pointer rounded-full bg-[#aec3ae ml-auto">
-            <Link to={`/tasks/${task._id}/edit`}>
+            <Link to={`/tasks/${task._id}/edit`}  onClick={(e) => handleClick(e, task._id, task.status, task.status, id)} >
                 <AiFillEdit className="w-2.5 h-2.5 aspect-square" /> 
             </Link>
           </div>
@@ -184,12 +206,12 @@ const HomePage = () => {
         </div>
         <div className="m2 mt-2 px-2 py-1   flex lg:bloc justify-betwee w-full  col-span-3 lg:col-span2  bg-[#ba90c6]  text-[#f9f5f6] rounded-lg  bg-red-20"> 
           <div className="p1 rounded-full  bg-whit ">
-            <Link to={`tasks/${task._id}`}>
+            <Link to={`/tasks/${task._id}`} onClick={(e) => handleClick(e, task._id, task.status, id)} >
               <p className="text-[0.675rem] hover:underline lg:hidde">View task</p>
             </Link>
           </div>
           <div className="p-1 cursor-pointer rounded-full bg[#fdf4f5] ml-auto">
-            <Link to={`/tasks/${task._id}/edit`}>
+            <Link to={`/tasks/${task._id}/edit`}  onClick={(e) => handleClick(e, task._id, task.status, id)} >
                 <AiOutlineEdit className="w-2.5 h-2.5 text-[#fdf4f5] aspect-square " />
             </Link>
           </div>
@@ -233,12 +255,12 @@ const HomePage = () => {
         </div>
         <div className="m2 mt-2 px-2 py-1 h-auto lg:mt0 flex  justify-betwee w-full lg: col-span-3  bg-[#96b6c5]  text-[#ffeadd] rounded-lg  bg-red-20"> 
           <div className="p1 rounded-full  bg-whit ">
-            <Link to={`/tasks/${task._id}`}>
+            <Link to={`/tasks/${task._id}`} onClick={(e) => handleClick(e, task._id, task.status, id)} >
                 <p className="text-[0.675rem] hover:underline">View task</p>
             </Link>
           </div>
           <div className="p-1 cursor-pointer rounded-full bg-[#adc4ce ml-auto">
-            <Link to={`/tasks/${task._id}/edit`}>
+            <Link to={`/tasks/${task._id}/edit`}  onClick={(e) => handleClick(e, task._id, task.status, id)} >
                 <AiOutlineEdit className="w-2.5 h-2.5 aspect-square" /> 
             </Link>
           </div>
@@ -270,7 +292,8 @@ const HomePage = () => {
   
   return (
     <section className="w-full h-auto  bg-slate-10 bg-red-20  px4 lg:px-10   font-[Poppins">
-      <Outlet />
+      {/* <Outlet context={{ currentTask }} /> */}
+      <Outlet context={{ task }} />
       <div className="w-full grid grid-cols-3 px-2 gap-2 lg:gap-4 mt-10  max-w-4xl mx-auto">
         <div className="col-span-1 space-y-2 h-96 " onDrop={(e) => handleOnDrop(e, "todo")} onDragOver={handleDragOver}>
           <h2 className=" bg-[#e4e4d0] text-[#94a684] mb-2 px-2 py-2 rounded-lg  font-bold">To Do <span className="bg-[#ffeef4] font-bold text-whit rounded-full px-1.5 text-sm ml-2">{todoCount}</span></h2>
