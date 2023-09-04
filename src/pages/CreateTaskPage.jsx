@@ -58,9 +58,9 @@ const CreateTaskPage = () => {
           className="flex flex-col  p4 lg:p8 rounded-lg placeholder:text-xs max-w-sm mx-auto bg-slate-20"
           replace
         >
-          <h3 className=" lg:text-xl bg-[#e4e4d0] text-[#94a684] mt-2 px-2 py-2 rounded-lg  font-bold">Create Task</h3>
+          <h3 className=" lg:text-xl bg-[#e4e4d0] text-[#94a684] mt-2 p-3 rounded-lg  font-bold">Create Task</h3>
 
-          <div className="bg-red-5 bg-[#e4e4d0] rounded-lg mt-4 p-2">
+          <div className="bg-red-5 bg-[#e4e4d0] rounded-lg mt-4 p-4">
               
             <label className="   w-full">
               <h3 className="  my-1  text-sm font-medium text-[#94a684]  bg-red-20">Task Title</h3>
@@ -87,7 +87,7 @@ const CreateTaskPage = () => {
 
             <label className="lg:flex bg-slate100  bg-[#e4e4d0]   w-full">
               <div className="lg:fle lg:flex-co  w-full ml-auto ">
-              <h3 className="py-1 mt-2 text-[#94a684] text-sm font-medium">Task Description</h3>
+              <h3 className="py-1 mt-4 text-[#94a684] text-sm font-medium">Task Description</h3>
                 <textarea
                   className="indent-2 border  border-[#94a684] rounded-lg lg:h-20 text-sm text-start py-1 mt4 placeholder:text-[#94a684] focus: focus: ring-[#94a684]  ring-offset2 ring-2 focus:ring w-full"
                   type="text-area"
@@ -108,21 +108,13 @@ const CreateTaskPage = () => {
 
             <div className="flex">
               <div className=" bg-green-200"></div>
-              <div className="ml-aut mt-2 w96 w-full  bg-red-20">
+              <div className="ml-aut mt-5 w96 w-full  bg-red-20">
                 <button
                   disabled={navigation.state === "submitting"}
-                  className=" text-slate-20 bg-slate-5  bg-[#94a684]  text-[#e4e4d0] text-sm font-semibold mt5 p-2 px4 w-full rounded-lg"
+                  className=" text-slate-20 bg-slate-5  bg-[#94a684]  opacity-80 hover:opacity-100   text-[#e4e4d0] text-sm font-semibold mt5 p-2 px4 w-full rounded-lg"
                 >
                   {navigation.state === "submitting" ? "Saving..." : "Save"}
                 </button>
-                {/* <button
-                  // disabled={navigation.state === "submitting"}
-                  className=" text-red-500 bg-indigo-100 text-sm font-semibold ml-5 p-2 px-4  rounded"
-                  >
-                  {navigation.state === "submitting"
-                    ? "Saving..."
-                    : "Cancel"}
-                </button> */}
               </div>
             </div>
           </div>

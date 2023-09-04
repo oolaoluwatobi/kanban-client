@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Form, Link, useActionData, useLoaderData, useNavigation, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
 import api  from '../api/server'
 import { AiFillDelete, AiFillEdit, AiFillHome, AiOutlineEdit } from 'react-icons/ai';
-import { MdDeleteForever } from 'react-icons/md';
+import { MdCancel, MdDeleteForever } from 'react-icons/md';
 
 export async function loader({ request, params }) {
   try {
@@ -45,13 +45,14 @@ const TaskDetailsPage = () => {
   const  { task }  = useOutletContext()
   const { id } = useParams()
 
-  let status = task === '' ? loaderData.status : task 
+  // let status = loaderData?.status  
+  let status = task === '' ? loaderData?.status : task 
 
-  const { _id, title, description } = loaderData
+  const { _id, title, description, } = loaderData
   console.log(loaderData, status, task)
 
   useEffect(() => {
-    console.log(task, id)
+    console.log(task, status, id)
     
     // async function getDisplayedTask(id) {
     //   try {
@@ -72,13 +73,13 @@ const TaskDetailsPage = () => {
     //   getDisplayedTask(id)
     // }
 
-  }, [task, id])
+  }, [task, status, id])
 
   return (
-    <section className=''>
+    <section className='bg-red-10' key={task}>
       <div className='pt-2 mx-auto max-w-sm'>
           <h3
-            className={`text-bas capitalize text-center  px-2 py-2 rounded-lg lg: sm:text-xl font-semibold ${
+            className={`text-bas hidden capitalize text-center  px-2 py-2 rounded-lg lg: sm:text-xl font-semibold ${
               status === "todo"
                 ? "bg-[#e4e4d0] text-[#94a684] "
                 : status === "doing"
@@ -112,14 +113,14 @@ const TaskDetailsPage = () => {
                 >
 
                 <Link to={'edit'} className={'flex items-baselin space-x2'}>
-                  <p  className={`hover: bg-[#56624a px-5 py-1  my-2  rounded-lg    ${
+                  <p  className={`hover: bg-[#56624a px5 py1  my-auto  rounded-lg    ${
                     status === "todo"
-                      ? "text-[#e4e4d0] bg-[#94a684] "
+                      ? "text-[#e4e4d0 text-[#94a684] "
                       : status === "doing"
-                      ? "text-[#f8e8ee] font-bold bg-[#ba90c6]"
-                      : "text-[#eee0c9] bg-[#96b6c5] font-bold "
+                      ? "text-[#f8e8ee font-bold text-[#ba90c6]"
+                      : "text-[#eee0c9 text-[#96b6c5] font-bold "
                   }`}>
-                  <AiFillEdit className="w-2.5 h-2.5 aspect-square" /> </p>    
+                  <AiFillEdit size={24} className="aspect-square" /> </p>    
                 </Link>
 
 
@@ -139,18 +140,12 @@ const TaskDetailsPage = () => {
                     }
                   }}
                 >
-                  <div className={` rounded-full px-1 aspect-square -top8 right2 bg-red-10   ${
-                    status === "todo"
-                      ? "bg-[#e4e4d0] bg-[#94a684 "
-                      : status === "doing"
-                      ? "bg-[#f8e8ee] font-bold bg-[#ba90c6"
-                      : " bg-[#eee0c9] bg-[#96b6c5 font-bold "
-                  }`}>
+                  <div>
                     <button
-                      className=" items-baseline text-rose-400 bg-red-20 h-full "
+                      className=" items-baseline text-rose-400  h-full "
                       type="submit"
                     >
-                      <AiFillDelete size={16} className="" />
+                      <MdCancel size={24} className="" />
                     </button>
                   </div>
                 </Form>
