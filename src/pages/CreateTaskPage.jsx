@@ -53,7 +53,7 @@ const CreateTaskPage = () => {
   // console.log(newTask, !newTask, !null, (undefined || null));
 
   return (
-    <div className=" bg-slate-50 rounded-md w-full h-full">
+    <div className=" bg-slate-5 p-10 rounded-md w-ful h-full">
       <div className="pt2 mx-auto bg-red-30">
         <Form
           method="post"
