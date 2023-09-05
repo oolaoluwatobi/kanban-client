@@ -207,7 +207,7 @@ const EditTaskPage = () => {
             method="post"
             action={`/tasks/${loaderData._id}/destroy`}
             onSubmit={(event) => {
-              if (!confirm("Please confirm you want to delete this record.")) {
+              if (!confirm("Please confirm you want to delete this Task.")) {
                 event.preventDefault();
               }
             }}
