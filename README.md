@@ -82,6 +82,10 @@ The server will start running on `http://localhost:3000`
 - Back-end: Node.js and Express.js
 - Database: MongoDB
 
+  ## Acknowledgments
+For inspiration and understanding of the flow, you can visit 
+[Trello](https://trello.com/).
+
 ## Screenshots
 
 ![App Screenshot](https://github.com/oolaoluwatobi/kanban-client/blob/main/public/homepage.png)
