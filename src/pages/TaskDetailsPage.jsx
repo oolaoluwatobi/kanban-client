@@ -76,7 +76,7 @@ const TaskDetailsPage = () => {
   }, [task, status, id])
 
   return (
-    <section className='bg-red-10 text-center h-[274px]' key={task}>
+    <section className='bg-red-10 text-center min-h-[274px]' key={task}>
       <div className='pt-2 mx-auto max-w-sm'>
           <h3
             className={`text-bas hidden capitalize text-center  px-2 py-2 rounded-lg lg: sm:text-xl font-semibold ${
@@ -102,8 +102,8 @@ const TaskDetailsPage = () => {
                 : "bg-[#e4e4d0] text-[#94a684]"
             }`}
           >
-            <h5 className='sm:p2 font-medium'>{title}</h5>
-            <p className='sm:p2 text-sm mt-3 font-normal'>{description}</p>
+            <h5 className='sm:p2 font-medium '>{title}</h5>
+            <p className='sm:p2 text-sm mt-3 font-normal text-justify p-2'>{description}</p>
             <div className="flex w-full  bg-red-20">
               <div className=" bg-green-20"></div>
               <div className="ml-auto mt4 w96 w-full  bg-red-20">

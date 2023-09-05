@@ -285,7 +285,7 @@ const HomePage = () => {
               {todoCount}
             </span>
           </h2>
-          <div className="hover: bg-stone-50 p2 space-y-2 pb-80 rounded-lg">
+          <div className="hover: bg-stone-50 p2 space-y-3 pb-80 rounded-lg">
             {renderToDo}
           </div>
         </div>
