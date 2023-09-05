@@ -2,7 +2,7 @@
 
 [Project Link](https://kanban-client-sigma.vercel.app/)
 
-This repository contains a React contacts application that utilizes React Router v6.4 for client-side routing. The app integrates with a RESTful API to perform CRUD (Create, Read, Update, Delete) operations on contacts. It also includes a search functionality using search parameters to efficiently find specific contacts.
+This repository contains a React Task Management application. The app integrates with a RESTful API to perform CRUD (Create, Read, Update, Delete) operations on Tasks.
 
 It is the frontend part of a fullstack app, MERN stack, [link to backend repo](https://github.com/oolaoluwatobi/kanban-board-task-management-server)
 
