@@ -65,7 +65,7 @@ npm install
 
 ## Usage
 
-To start the backend server, use the following command:
+To start the app, use the following command:
 
 ```bash
 npm start
