@@ -124,14 +124,9 @@ const TaskDetailsPage = () => {
                 </Link>
 
 
-                <p className="mx-auto items-center  bg-red-20 my-auto">
-                    <Link to={"/"}>
-                      <AiFillHome size={24} />
-                    </Link>
-                  </p>
                 
                 <Form
-                  className="my-auto ml-aut  bg-red-3"
+                  className="pt-2 ml-auto  bg-red-3"
                   method="post"
                   action={`/tasks/${loaderData._id}/destroy`}
                   onSubmit={(event) => {

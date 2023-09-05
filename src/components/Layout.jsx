@@ -18,7 +18,7 @@ const Layout = () => {
 
   return (
     <div className="bg-red-10 w-full ">
-      {/* <Header /> */}
+      <Header />
       <main className="w-full pt-10">
         <Outlet context={{resData}} />
       </main>

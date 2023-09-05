@@ -189,12 +189,12 @@ const EditTaskPage = () => {
                 }`}></div> : <FaSave size={24} />}
                   </button>
 
-                  <p className="mx-auto items-center  bg-red-20 my-auto">
+                  {/* <p className="mx-auto items-center  bg-red-20 my-auto">
                     <Link to={"/"}>
                       <AiFillHome size={24} />
 
                     </Link>
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
