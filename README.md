@@ -82,7 +82,8 @@ The server will start running on `http://localhost:3000`
 - Back-end: Node.js and Express.js
 - Database: MongoDB
 
-  ## Acknowledgments
+  
+## Acknowledgments
 For inspiration and understanding of the flow, you can visit 
 [Trello](https://trello.com/).
 
