@@ -14,6 +14,7 @@ import { AiFillDelete, AiFillHome } from "react-icons/ai";
 import StatusFetcher from "../components/StatusFetcher";
 import { MdCancel } from "react-icons/md";
 import {FaSave} from "react-icons/fa"
+import { toast } from "react-hot-toast";
 
 export async function loader({ request, params }) {
   try {
@@ -44,11 +45,13 @@ export async function action({ request, params }) {
   try {
     const res = await api.put("/tasks", newTask);
     console.log(res.data);
+    toast.success(`Task with Title: ${newTask.title.substring(0, 10) + "..."} Edited successfully`)
 
     // Use history.push() to navigate to a different route
     // history.push('/'); // Replace '/' with the desired route
     return res.data, redirect("/");
   } catch (error) {
+    toast.error(`Task with Title:  ${newTask.title.substring(0, 10) + "..."} Edit Failed`)
     return { error, newTask };
   }
 }

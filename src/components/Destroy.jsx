@@ -2,6 +2,7 @@ import React from "react";
 import { redirect, useActionData } from "react-router-dom";
 
 import api from "../api/server";
+import { toast } from "react-hot-toast";
 
 export async function action({ request, params }) {
   // throw new Error("oh dang!")
@@ -15,9 +16,11 @@ export async function action({ request, params }) {
 
 
     console.log(res, res?.data, "15: Subs...");
+    toast.success('Task Deleted successfully')
     return redirect("/");
   } catch (error) {
     console.log(error.message);
+    toast.success('Task Delete Fail')
     return error, redirect("/");
   }
 }

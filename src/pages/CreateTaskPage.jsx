@@ -7,6 +7,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import api from "../api/server";
+import { toast } from "react-hot-toast";
 
 export async function loader({ request }) {
   console.log(request);
@@ -26,11 +27,12 @@ export async function action({ request }) {
   try {
     const res = await api.post("tasks", newTask);
     console.log(res.data);
-
+    toast.success(`New Task with Title: ${newTask.title.substring(0, 10) + "..."} Created successfully`)
     // Use history.push() to navigate to a different route
     // history.push('/'); // Replace '/' with the desired route
     return res.data, redirect("/");
   } catch (error) {
+    toast.success(`New Task with Title: ${newTask.title.substring(0, 10) + "..."} creation failed`)
     return { error, newTask };
   }
 }

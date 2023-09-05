@@ -76,7 +76,7 @@ const TaskDetailsPage = () => {
   }, [task, status, id])
 
   return (
-    <section className='bg-red-10' key={task}>
+    <section className='bg-red-10 text-center h-[274px]' key={task}>
       <div className='pt-2 mx-auto max-w-sm'>
           <h3
             className={`text-bas hidden capitalize text-center  px-2 py-2 rounded-lg lg: sm:text-xl font-semibold ${

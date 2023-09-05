@@ -10,6 +10,7 @@ import {
 import { MdDeleteForever } from "react-icons/md";
 import { AiFillEdit, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import api from "../api/server";
+import { toast } from "react-hot-toast";
 
 const HomePage = () => {
   const { resData } = useOutletContext();
@@ -51,6 +52,7 @@ const HomePage = () => {
             setTask(res?.data?.status);
           }
           setDroppedTask(res?.data?.status);
+          toast.success("Status update successful")
           console.log(
             res,
             res?.data?.status,
@@ -62,6 +64,7 @@ const HomePage = () => {
           return redirect(res?.data?.status);
         } catch (error) {
           console.log(error.message);
+          toast.error("Status update Failed")
           return error, redirect("/");
         }
       }
