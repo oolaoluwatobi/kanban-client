@@ -4,10 +4,10 @@
 
 This repository contains a React Task Management application. The app integrates with a RESTful API to perform CRUD (Create, Read, Update, Delete) operations on Tasks.
 
-It is the frontend part of a fullstack app, MERN stack, [link to backend repo](https://github.com/oolaoluwatobi/kanban-board-task-management-server)
+It is the frontend part of a full-stack app, MERN stack, [link to backend repo](https://github.com/oolaoluwatobi/kanban-board-task-management-server)
 
 ## Overview
-This project aims to develop a Kanban board-inspired task management application, providing users with a seamless way to manage tasks through different stages of completion by dragging and dropping various task. Drawing inspiration from platforms like Trello, our goal is to create a user-friendly and efficient tool for task organization.
+This project is a Kanban board-inspired task management application, providing users with a seamless way to manage tasks through different stages of completion by dragging and dropping various task. Drawing inspiration from platforms like Trello, our goal is to create a user-friendly and efficient tool for task organization.
 
 ## Features
 
